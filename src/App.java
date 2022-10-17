@@ -38,23 +38,26 @@ public class App {
                 while(!partida.temVencedor(t) && !partida.deuVelha(t)); 
 
                 if(partida.temVencedor(t)){
+                    partida.setVencedor(jogadorDaVez);
                     jogo.imprimeTabu(t);
                     System.out.println("");
                     System.out.println("Parabéns!!! " + jogadorDaVez.nome + " Você ganhou!");
                     System.out.println("----------------------------------------------------");
                 } else {
+                    partida.setVencedor(new Jogador("Velha", "#"));
                     jogo.imprimeTabu(t);
                     System.out.println("");
                     System.out.println("Deu Velha!!!");
                     System.out.println("####################################");
                 }
-    
-
-    
         }
 
         while(Validacoes.querJogar());
 
+        jogo.mostrarHistoricoDePartidas();
+
+
+        System.out.println("");
         System.out.println("Obrigado por Jogar!");
     
     }
@@ -63,6 +66,11 @@ public class App {
 class Partida {
     ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
     ArrayList<Jogada> jogadas = new ArrayList<Jogada>();
+    Jogador vencedor;
+
+    public void setVencedor(Jogador vencedor) {
+        this.vencedor = vencedor;
+    }
 
     public boolean temVencedor(Tabuleiro atual) {
         
@@ -102,9 +110,14 @@ class Jogo {
     Integer nPartida;
     ArrayList<Partida> partidas = new ArrayList<Partida>();
 
-    void ranking(){
+    void mostrarHistoricoDePartidas(){
+        System.out.println("----------------------------------");
+        System.out.println("-------Histórico de Partidas------");
+        System.out.println("----------------------------------");
+        int count = 0;
         for(Partida tmp : partidas) {
-            System.out.println();
+            count++;
+            System.out.println(count +"* Partida - Vencedor: " + tmp.vencedor.nome + " " + tmp.vencedor.peca);
         }
     }
 
