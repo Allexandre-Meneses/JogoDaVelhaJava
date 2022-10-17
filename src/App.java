@@ -35,18 +35,27 @@ public class App {
                     // Realizar Jogada
                     partida.jogadas.add(t.realizaJogada(jogadorDaVez, jogo, t));
                 }
-                while(!partida.temVencedor(t)); 
+                while(!partida.temVencedor(t)&&!partida.deuVelha(t)); 
+
+                if(partida.temVencedor(t)){
+                    jogo.imprimeTabu(t);
+                    System.out.println("");
+                    System.out.println("Parabéns!!! " + jogadorDaVez.nome + " Você ganhou!");
+                    System.out.println("----------------------------------------------------");
+                } else {
+                    jogo.imprimeTabu(t);
+                    System.out.println("");
+                    System.out.println("Deu Velha!!!");
+                    System.out.println("####################################");
+                }
     
-                jogo.imprimeTabu(t);
-                System.out.println("");
-                System.out.println("Parabéns!!! " + jogadorDaVez.nome + " Você ganhou!");
-                System.out.println("----------------------------------------------------");
+
     
         }
 
         while(Validacoes.querJogar());
 
-
+        System.out.println("Obrigado por Jogar!");
     
     }
 }
@@ -70,6 +79,13 @@ class Partida {
         return false;        
     }
 
+    public boolean deuVelha(Tabuleiro t) {
+        if (t.verificaVelha()){
+            return true;
+        }
+        return false;
+    }
+
     Jogador quemJoga(){
         if (this.jogadas.size() == 0){
             return jogadores.get(0);
@@ -85,6 +101,12 @@ class Partida {
 class Jogo {
     Integer nPartida;
     ArrayList<Partida> partidas = new ArrayList<Partida>();
+
+    void ranking(){
+        for(Partida tmp : partidas) {
+            System.out.println();
+        }
+    }
 
     Jogador addJogador(){
 
@@ -155,6 +177,20 @@ class Tabuleiro {
                 this.tabuleiro.add(new Campo(new Coordenada(i, c), " "));
             }
         }
+    }
+
+    public boolean verificaVelha() {
+        for (int tmp = 0; tmp < 3; tmp++) {
+            Campo campoUm = getCampoNaCoordenada(tmp, 0);
+            Campo campoDois = getCampoNaCoordenada(tmp, 1);
+            Campo campoTres = getCampoNaCoordenada(tmp, 2);
+
+            if(campoUm.isEmpty() || campoDois.isEmpty() || campoTres.isEmpty()){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public boolean verificaHorizontal() {
