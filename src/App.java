@@ -35,7 +35,7 @@ public class App {
                     // Realizar Jogada
                     partida.jogadas.add(t.realizaJogada(jogadorDaVez, jogo, t));
                 }
-                while(!partida.temVencedor(t)&&!partida.deuVelha(t)); 
+                while(!partida.temVencedor(t) && !partida.deuVelha(t)); 
 
                 if(partida.temVencedor(t)){
                     jogo.imprimeTabu(t);
