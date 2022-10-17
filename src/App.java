@@ -212,11 +212,10 @@ class Tabuleiro {
         Campo campoDois = getCampoNaCoordenada(tmp, 1);
         Campo campoTres = getCampoNaCoordenada(tmp, 2);
 
-        if(campoUm.isEmpty() || campoDois.isEmpty() || campoTres.isEmpty()) {
-            return false;
-            }
-        if(campoUm.simbolo == campoDois.simbolo && campoDois.simbolo == campoTres.simbolo) {
-            return true;
+        if(!campoUm.isEmpty() && !campoDois.isEmpty() && !campoTres.isEmpty()) {
+            if(campoUm.simbolo == campoDois.simbolo && campoDois.simbolo == campoTres.simbolo) {
+                return true;
+                }
             }
         }
         return false;
@@ -229,13 +228,12 @@ class Tabuleiro {
             Campo campoDois = getCampoNaCoordenada(1, tmp);
             Campo campoTres = getCampoNaCoordenada(2, tmp);
 
-            if(campoUm.isEmpty() || campoDois.isEmpty() || campoTres.isEmpty()) {
-                return false;
+            if(!campoUm.isEmpty() && !campoDois.isEmpty() && !campoTres.isEmpty()) {
+                if(campoUm.simbolo == campoDois.simbolo && campoDois.simbolo == campoTres.simbolo) {
+                    return true;
+                }                
             }
 
-            if(campoUm.simbolo == campoDois.simbolo && campoDois.simbolo == campoTres.simbolo) {
-                return true;
-            }
         }
         return false;
     }
@@ -247,23 +245,19 @@ class Tabuleiro {
             Campo campoQuatro = getCampoNaCoordenada(0, 2);
             Campo campoCinco = getCampoNaCoordenada(2, 0);
 
-            if(campoUm.isEmpty() || campoDois.isEmpty() || campoTres.isEmpty()) {
-                return false;
-                }            
-
-            if (campoUm.simbolo == campoDois.simbolo &&
+            if(!campoUm.isEmpty() && !campoDois.isEmpty() && !campoTres.isEmpty()) {
+                if (campoUm.simbolo == campoDois.simbolo &&
                 campoDois.simbolo == campoTres.simbolo){
                     return true;
-               }
-
-            if(campoQuatro.isEmpty() || campoDois.isEmpty() || campoCinco.isEmpty()) {
-                return false;
                 }
-            
-            if (campoQuatro.simbolo == campoDois.simbolo &&
+            }            
+
+            if(!campoQuatro.isEmpty() && !campoDois.isEmpty() && !campoCinco.isEmpty()) {
+                if (campoQuatro.simbolo == campoDois.simbolo &&
                 campoDois.simbolo == campoCinco.simbolo) {
                     return true;
-               }
+                }
+            }
 
         return false;
         }
