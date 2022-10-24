@@ -92,11 +92,27 @@ public class Tabuleiro {
         int linha,coluna;
 
         do {
+            
+            boolean isValido;
+            do{
 
-            System.out.println(jogador.nome + " Digite a linha que deseja marcar:");
-            linha = sc.scanner.nextInt();
-            System.out.println(jogador.nome + " Digite a coluna que deseja marcar:");
-            coluna = sc.scanner.nextInt();
+                isValido = true;
+
+                System.out.print(jogador.nome + " Digite a linha que deseja marcar:");
+                linha = sc.scanner.nextInt();
+                if(linha > 2) isValido = false;
+                System.out.print(jogador.nome + " Digite a coluna que deseja marcar:");
+                coluna = sc.scanner.nextInt();
+                if(coluna > 2) isValido = false;
+
+                if(!isValido) {
+                    System.out.println("--------------------------------");
+                    System.out.println("Digite uma Coordenada Válida!");
+                    System.out.println("------------------------------------");
+                }
+            
+            }
+            while(!isValido);
 
             campo = getCampoNaCoordenada(linha, coluna);
             System.out.println(jogador.nome + " Jogou na coordenada: (" + linha + "," + coluna + ")");

@@ -23,14 +23,14 @@ public class Jogo {
         ScannerJogo sc = new ScannerJogo();
         String simbolo;
 
-        System.out.println("Insira seu nome:");
+        System.out.print("Insira seu nome:");
         String nome = sc.scanner.next();
 
-        System.out.println("Insira com qual Símbolo você deseja jogar:(X/O)");
+        System.out.print("Insira com qual Símbolo você deseja jogar:(X/O)");
         simbolo = sc.scanner.next();
 
         while(!Validações.validaSimbolo(simbolo)){
-            System.out.println("Insira um símbolo válido: (X/O)");
+            System.out.print("Insira um símbolo válido: (X/O)");
             simbolo = sc.scanner.next();
         }
 
