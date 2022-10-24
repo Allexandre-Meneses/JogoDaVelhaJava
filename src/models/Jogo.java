@@ -48,5 +48,31 @@ public class Jogo {
         System.out.println("["+campoUm.simbolo+"]"+"["+campoDois.simbolo+"]"+"["+campoTres.simbolo+"]");
         }
     }
+
+    public void mostraPlacar(){
+
+        Jogador jogadorUm = this.partidas.get(0).jogadores.get(0);
+        Jogador jogadorDois = this.partidas.get(0).jogadores.get(1);
+        Jogador velha = new Jogador("Velha", "#");
+
+        jogadorUm.nVitorias = 0;
+        jogadorDois.nVitorias = 0;
+        velha.nVitorias = 0;
+
+        for(Partida tmp : this.partidas) {
+            if(jogadorUm.equals(tmp.vencedor)){
+                jogadorUm.nVitorias++;
+            } else 
+            if(jogadorDois.equals(tmp.vencedor)){
+                jogadorDois.nVitorias++;
+            } else {
+                velha.nVitorias++;
+            }
+        }
+
+        System.out.println("----------PLACAR----------");
+        System.out.println(jogadorUm.nome + " " + jogadorUm.nVitorias + " X " + jogadorDois.nVitorias + " " + jogadorDois.nome + " X " + velha.nome + " " + velha.nVitorias);
+
+    }
    
 }

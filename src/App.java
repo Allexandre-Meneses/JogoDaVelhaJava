@@ -52,11 +52,14 @@ public class App {
                     System.out.println("Deu Velha!!!");
                     System.out.println("####################################");
                 }
+
+                jogo.mostraPlacar();
         }
 
         while(Validações.querJogar());
 
         jogo.mostrarHistóricoDePartidas();
+        jogo.mostraPlacar();
 
 
         System.out.println("");

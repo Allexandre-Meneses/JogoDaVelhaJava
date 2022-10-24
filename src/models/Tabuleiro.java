@@ -92,7 +92,7 @@ public class Tabuleiro {
         int linha,coluna;
 
         do {
-            
+
             boolean isValido;
             do{
 
@@ -104,9 +104,10 @@ public class Tabuleiro {
                 System.out.print(jogador.nome + " Digite a coluna que deseja marcar:");
                 coluna = sc.scanner.nextInt();
                 if(coluna > 2) isValido = false;
+                System.out.println("");
 
                 if(!isValido) {
-                    System.out.println("--------------------------------");
+                    System.out.println("------------------------------------");
                     System.out.println("Digite uma Coordenada Válida!");
                     System.out.println("------------------------------------");
                 }
