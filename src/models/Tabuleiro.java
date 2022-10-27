@@ -1,9 +1,7 @@
 package models;
 
 import java.util.ArrayList;
-
 import utils.ScannerJogo;
-import utils.Validações;
 
 public class Tabuleiro {
     ArrayList<Campo> tabuleiro = new ArrayList<Campo>();

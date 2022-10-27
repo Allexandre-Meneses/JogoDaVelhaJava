@@ -3,7 +3,6 @@ import models.Jogo;
 import models.Partida;
 import models.Tabuleiro;
 import utils.ScannerJogo;
-import utils.Validações;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -67,7 +66,8 @@ public class App {
         System.out.println("Obrigado por Jogar!");
     
     }
-    public boolean querJogar(){
+    
+    public static boolean querJogar(){
         ScannerJogo sc = new ScannerJogo();
         System.out.println("Deseja jogar novamente?(S/N)");
         String resposta = sc.scanner.next();
