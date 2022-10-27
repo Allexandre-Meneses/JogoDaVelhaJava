@@ -118,14 +118,14 @@ public class Tabuleiro {
             campo = getCampoNaCoordenada(linha, coluna);
             System.out.println(jogador.nome + " Jogou na coordenada: (" + linha + "," + coluna + ")");
         
-            if (!Validações.campoValido(campo)){
+            if (!campoValido(campo)){
                 jogo.imprimeTabu(atual);
                 System.out.println("");
                 System.out.println("Campo inválido, digite um campo válido!");
                 System.out.println("----------------------------------------");
             }
         }
-        while(!Validações.campoValido(campo));
+        while(!campoValido(campo));
 
         campo.simbolo = jogador.peca;
         Jogada nova = new Jogada(jogador, campo);
@@ -140,5 +140,12 @@ public class Tabuleiro {
             return tmp;
         }
         return null;
+    }
+
+    public boolean campoValido(Campo campo) {
+        if(campo.isEmpty()){
+            return true;
+        }
+        return false;
     }
 }

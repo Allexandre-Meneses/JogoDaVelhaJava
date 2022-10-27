@@ -1,7 +1,6 @@
 package models;
 
 import utils.ScannerJogo;
-import utils.Validações;
 import java.util.ArrayList;
 
 public class Jogo {
@@ -29,7 +28,7 @@ public class Jogo {
         System.out.print("Insira com qual Símbolo você deseja jogar:(X/O)");
         simbolo = sc.scanner.next();
 
-        while(!Validações.validaSimbolo(simbolo)){
+        while(!validaSimbolo(simbolo)){
             System.out.print("Insira um símbolo válido: (X/O)");
             simbolo = sc.scanner.next();
         }
@@ -73,6 +72,15 @@ public class Jogo {
         System.out.println("----------PLACAR----------");
         System.out.println(jogadorUm.nome + " " + jogadorUm.nVitorias + " X " + jogadorDois.nVitorias + " " + jogadorDois.nome + " X " + velha.nome + " " + velha.nVitorias);
 
+    }
+
+    public boolean validaSimbolo(String simbolo){
+        
+        if(simbolo.equalsIgnoreCase("X")||
+        simbolo.equalsIgnoreCase("O")){
+            return true;
+        }
+        return false;
     }
    
 }
