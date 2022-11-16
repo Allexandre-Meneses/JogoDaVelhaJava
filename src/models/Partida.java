@@ -6,6 +6,7 @@ public class Partida {
     public ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
     public ArrayList<Jogada> jogadas = new ArrayList<Jogada>();
     Jogador vencedor;
+    public Tabuleiro tabuleiro;
 
     public void setVencedor(Jogador vencedor) {
         this.vencedor = vencedor;

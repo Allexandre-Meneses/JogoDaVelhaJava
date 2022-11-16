@@ -7,7 +7,11 @@ public class Jogo {
     Integer nPartida;
     public ArrayList<Partida> partidas = new ArrayList<Partida>();
 
+
+    ScannerJogo sc = new ScannerJogo();
+
     public void mostrarHistóricoDePartidas(){
+
         System.out.println("----------------------------------");
         System.out.println("-------Histórico de Partidas------");
         System.out.println("----------------------------------");
@@ -15,11 +19,10 @@ public class Jogo {
         for(Partida tmp : partidas) {
             count++;
             System.out.println(count +"* Partida - Vencedor: " + tmp.vencedor.nome + " " + tmp.vencedor.peca);
-        }
+        }       
     }
 
     public Jogador addJogador(){
-        ScannerJogo sc = new ScannerJogo();
         String simbolo;
 
         System.out.print("Insira seu nome:");
@@ -70,7 +73,9 @@ public class Jogo {
         }
 
         System.out.println("----------PLACAR----------");
-        System.out.println(jogadorUm.nome + " " + jogadorUm.nVitorias + " X " + jogadorDois.nVitorias + " " + jogadorDois.nome + " X " + velha.nome + " " + velha.nVitorias);
+        System.out.println(jogadorUm.nome + " " + jogadorUm.nVitorias);
+        System.out.println(jogadorDois.nome + " " + jogadorDois.nVitorias);
+        System.out.println(velha.nome + " " + velha.nVitorias);
 
     }
 
@@ -82,5 +87,22 @@ public class Jogo {
         }
         return false;
     }
+
+    public void novoJogo() {
+    }
+
+    public void mostrarHistoricoDaPartida() {
+        this.mostrarHistóricoDePartidas();
+        System.out.println("Qual partida deseja ver o histórico de jogadas?");
+        int nPartida = sc.scanner.nextInt();
+        Partida partidaSelecionada = this.partidas.get(nPartida-1);
+        for (Jogada tmp : partidaSelecionada.jogadas) {
+            System.out.println(tmp.jogador.nome + " Jogou na coordenada (" + tmp.campo.coordenada.linha +
+            "," + tmp.campo.coordenada.coluna + ")");
+        }  
+        System.out.println("-----ESTADO DO TABULEIRO AO FIM DA PARTIDA-----");  
+        this.imprimeTabu(partidaSelecionada.tabuleiro);
+    }
+    
    
 }
