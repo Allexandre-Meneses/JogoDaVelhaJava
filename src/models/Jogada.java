@@ -1,8 +1,8 @@
 package models;
 
 public class Jogada {
-    Jogador jogador;
-    Campo campo;
+    public Jogador jogador;
+    public Campo campo;
 
     Jogada(Jogador jogador, Campo campo){
         this.jogador = jogador;

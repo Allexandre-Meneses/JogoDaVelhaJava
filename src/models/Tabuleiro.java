@@ -1,10 +1,10 @@
 package models;
 
 import java.util.ArrayList;
-import utils.ScannerJogo;
 
 public class Tabuleiro {
     ArrayList<Campo> tabuleiro = new ArrayList<Campo>();
+    Jogo jogo = Jogo.getInstance();
 
     public Tabuleiro() {
         for(int i = 0; i < 3; i++) {
@@ -13,6 +13,7 @@ public class Tabuleiro {
             }
         }
     }
+
 
     public boolean verificaVelha() {
         for (int tmp = 0; tmp < 3; tmp++) {
@@ -84,54 +85,16 @@ public class Tabuleiro {
         return false;
         }
 
-    public Jogada realizaJogada(Jogador jogador, Jogo jogo, Tabuleiro atual) {
-        ScannerJogo sc = new ScannerJogo();
-        Campo campo;
-        int linha,coluna;
-
-        do {
-
-            boolean isValido;
-            do{
-
-                isValido = true;
-
-                System.out.print(jogador.nome + " Digite a linha que deseja marcar:");
-                linha = sc.scanner.nextInt();
-                if(linha > 2) isValido = false;
-                System.out.print(jogador.nome + " Digite a coluna que deseja marcar:");
-                coluna = sc.scanner.nextInt();
-                if(coluna > 2) isValido = false;
-                System.out.println("");
-
-                if(!isValido) {
-                    System.out.println("------------------------------------");
-                    System.out.println("Digite uma Coordenada Válida!");
-                    System.out.println("------------------------------------");
-                }
-            
-            }
-            while(!isValido);
-
-            campo = getCampoNaCoordenada(linha, coluna);
-            System.out.println(jogador.nome + " Jogou na coordenada: (" + linha + "," + coluna + ")");
-        
-            if (!campoValido(campo)){
-                jogo.imprimeTabu(atual);
-                System.out.println("");
-                System.out.println("Campo inválido, digite um campo válido!");
-                System.out.println("----------------------------------------");
-            }
-        }
-        while(!campoValido(campo));
+    public Jogada realizaJogada(Jogador jogador, Tabuleiro atual, Campo campo) {
 
         campo.simbolo = jogador.peca;
         Jogada nova = new Jogada(jogador, campo);
 
         return nova;
+        
     }
 
-    Campo getCampoNaCoordenada(int linha, int coluna) {
+    public Campo getCampoNaCoordenada(int linha, int coluna) {
         for (Campo tmp : tabuleiro) {
             if (tmp.coordenada.linha == linha &&
                 tmp.coordenada.coluna == coluna)

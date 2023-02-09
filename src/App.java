@@ -1,16 +1,13 @@
-import models.Jogador;
-import models.Jogo;
-import models.Partida;
-import models.Tabuleiro;
-import utils.ScannerJogo;
 import utils.Ui;
 
 public class App {
     public static void main(String[] args) throws Exception {
         //Iniciar Jogo
-        Jogo jogo = new Jogo();
-        Ui ui = new Ui();
-
+        Ui ui = Ui.getInstance();
+        
+        while(ui.chamaMenu());
+        
+        /*
         //Laço Jogar novamente
         do{
 
@@ -61,9 +58,11 @@ public class App {
 
         System.out.println("");
         System.out.println("Obrigado por Jogar!");
-    
+    */
+
     }
-    
+
+    /*
     public static boolean querSair(){
         ScannerJogo sc = new ScannerJogo();
         System.out.println("Deseja Realmente Sair?(S/N)");
@@ -73,6 +72,8 @@ public class App {
         }
         return false;
     }
+    */
+    
 }
 
 
